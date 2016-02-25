@@ -8,7 +8,61 @@
 
   <div class="row">
     <div class="span12">
-    {{docs|markdown}}
+
+    <ul class="questions">
+      {% for question in questions %}
+      <li>
+        <time>{{question.timestamp|date:"yyyy-MM-dd HH:mm"}}</time>
+        <p>{{question.question}}</p>
+        <p>{{question.answer}}</p>
+      </li>
+      {% endfor %}
+
+      </ul>
     </div>
+
+
+    <!--<div class="span12">
+
+    {{docs|markdown}}
+    </div>-->
   </div>
+
+<div class="row">
+  <div class="span12">
+    <form method="POST" action="/">
+      {% csrf-field %}
+      <p>
+        Question:
+        <textarea class="form-control"
+                  rows="4"
+                  cols="50"
+                  name="question">{{question}}</textarea>
+
+      </p>
+      {% if errors.question %}
+      <div class="alert alert-danger">
+        {{errors.question|join}}
+      </div>
+      {% endif %}
+      <p>
+
+
+      Answer:
+      <textarea class="form-control"
+                rows="4"
+                cols="50"
+                name="answer">{{answer}}</textarea>
+      </p>
+
+      {% if errors.answer %}
+      <div class="aler alert-danger">
+        {{errors.answer|join}}
+      </div>
+      {% endif %}
+
+      <input type="submit" class="btn btn-primary" value="quiz up"/>
+    </form>
+  </div>
+</div>
 {% endblock %}
