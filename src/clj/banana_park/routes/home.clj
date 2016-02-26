@@ -11,7 +11,7 @@
 (defn home-page [{:keys [flash]}]
   (layout/render
     "home.html"
-    (merge {:questions (db/get-questions!)}
+    (merge {:questions (db/get-questions)}
            (select-keys flash  [:question :answer :errors]))))
 
 (defn about-page []
@@ -25,7 +25,7 @@
       :question v/required
       :answer v/required )))
 
-(defn save-question! [{:keys [params]}]
+(defn create-question! [{:keys [params]}]
   (if-let [errors (validate-question params)]
     (-> (ok/found "/")
         (assoc :flash (assoc params :errors errors)))
@@ -36,5 +36,5 @@
 
 (defroutes home-routes
   (GET "/" request (home-page request))
-  (POST "/" request (save-question! request))
+  (POST "/" request (create-question! request))
   (GET "/about" [] (about-page)))

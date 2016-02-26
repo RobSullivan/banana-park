@@ -23,7 +23,7 @@
                  [mount "0.1.9"]
                  [luminus-nrepl "0.1.2"]
                  [migratus "0.8.13"]
-                 [conman "0.4.3"]
+                 [conman "0.4.4"]
                  [com.h2database/h2 "1.4.191"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
                  [luminus-immutant "0.1.1"]

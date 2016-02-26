@@ -26,8 +26,9 @@ INSERT INTO questions
 (question_id, question, answer, timestamp)
 VALUES (:question_id, :question, :answer, :timestamp);
 
--- :name get-questions! :! :n
+-- :name get-questions :? :*
 -- :doc retrieve all the questions created
 SELECT * FROM questions
 ORDER BY timestamp DESC;
+
 
